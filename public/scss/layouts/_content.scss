@@ -1,0 +1,25 @@
+
+main.content-wrapper {
+    flex-basis: 0;
+    flex-grow: 1;
+    box-shadow: 0 0 20px rgba(color('gray'), .1);
+    min-height: 100vh;
+    max-width: 100%;
+    .container {
+        @media screen and (min-width: breakpoint('md')) { max-width: breakpoint('md'); }
+        @media screen and (min-width: breakpoint('lg')) { max-width: breakpoint('lg'); }
+        @media screen and (min-width: breakpoint('xl')) { max-width: breakpoint('xl'); }
+    }
+    @media screen and (min-width: breakpoint('lg')) {
+        margin-left: auto;
+        max-width: calc(100% - 260px);
+    }
+}
+
+section.content {
+    background-color: color('light');
+    padding: 8rem 0;
+    @media screen and (min-width: breakpoint('md')) {
+        padding: 3rem;
+    }
+}

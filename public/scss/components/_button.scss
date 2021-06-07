@@ -1,0 +1,141 @@
+.btn {
+    padding: $btn-padding;
+    border: 0;
+    font-size: $btn-font-size;
+    border-radius: $btn-border-radius;
+    font-weight: $btn-font-weight;
+    transition: all ease-in .3s;
+    position: relative;
+    &-pill { border-radius: $btn-pill-border-radius; }
+    &-xs { 
+        font-size: $btn-xs-font-size;
+        padding: $btn-xs-padding;
+    }
+    &-sm { 
+        font-size: $btn-sm-font-size;
+        padding: $btn-sm-padding;
+    }
+    &-lg {
+        font-size: $btn-lg-font-size; 
+        padding: $btn-lg-padding; 
+    }
+    &:focus {
+        outline: unset !important;
+        border:  none !important;
+        box-shadow: unset !important;
+    }
+    &-left {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding-left: 1.8rem !important;
+    }
+    &:disabled {
+        &:hover {
+            box-shadow: unset !important;
+        }
+    }
+
+    @if variable-exists(gradient-colors) {
+        @each $color-name, $color-value in $gradient-colors {
+            &-gradient-#{$color-name} {
+                background: $color-value !important;
+                color: color('white') !important; 
+                &:active {
+                    background: $color-value !important;
+                    border: unset !important;
+                }
+                &:hover {
+                    background-color: color($color-name);
+                    box-shadow: $btn-box-shadow-size rgba(color($color-name), $btn-box-shadow-opacity);
+                }
+            }
+        }
+    }
+    
+    @each $color-name, $color-value in $colors {
+        &-#{$color-name} {
+            background-color: $color-value !important;
+            @if ($color-name == 'light') {
+                color: $btn-light-props-color !important; 
+                // OVERRIDE
+                &:active {
+                    background: $btn-light-props-color !important;
+                    border: unset !important;
+                }
+                &:hover {
+                    background-color: $btn-light-props-color !important;
+                    color: $color-value !important; 
+                    box-shadow: $btn-box-shadow-size rgba($btn-light-props-color, $btn-box-shadow-opacity);
+                }
+                &.active {
+                    background-color: $btn-light-props-color !important;
+                    color: $color-value !important; 
+                    box-shadow: $btn-box-shadow-size rgba($btn-light-props-color, $btn-box-shadow-opacity);
+                }
+            } @else if ($color-name == 'danger-500') {
+                color: color('danger') !important; 
+                &:active {
+                    background: color('danger') !important;
+                    border: unset !important;
+                    color: color('white') !important; 
+                }
+                &:hover {
+                    background-color: color('danger') !important;
+                    color: color('white') !important; 
+                    box-shadow: $btn-box-shadow-size rgba(color('danger'), $btn-box-shadow-opacity);
+                }
+            } @else if ($color-name == 'white') {
+                color: color('muted') !important; 
+                background: color('light') !important;
+                &:active {
+                    background: color('light') !important;
+                    border: unset !important;
+                }
+                &:hover {
+                    background-color: color('light') !important;
+                    color: olor('muted') !important; 
+                    box-shadow: $btn-box-shadow-size rgba(color('light'), $btn-box-shadow-opacity);
+                }
+                &.active {
+                    background-color: color('light') !important;
+                    color: olor('muted') !important; 
+                    box-shadow: $btn-box-shadow-size rgba(color('light'), $btn-box-shadow-opacity);
+                }
+            } @else {
+                color: $btn-dark-props-color !important; 
+                &:active {
+                    background: $color-value !important;
+                    border: unset !important;
+                }
+                &:hover {
+                    background-color: $color-value;
+                    box-shadow: $btn-box-shadow-size rgba($color-value, $btn-box-shadow-opacity);
+                }
+            }
+        }
+        &-outline-#{$color-name} {
+            border: 1px solid $color-value;
+            color: $color-value !important;
+            &:hover {
+                color: color('white') !important;
+                background-color: $color-value;
+                border: 1px solid $color-value;
+            }
+            &:active {
+                color: color('white') !important;
+                background: $color-value !important;
+                border: unset !important;
+            }
+            &:focus {
+                color: color('white') !important;
+                border: 1px solid $color-value !important;
+                background: $color-value !important;
+            }
+            &:hover {
+                background-color: $color-value;
+                box-shadow: $btn-box-shadow-size rgba($color-value, $btn-box-shadow-opacity);
+            }
+        }
+    }
+}

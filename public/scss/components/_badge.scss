@@ -1,0 +1,31 @@
+.badge {
+    padding: $badge-padding;
+    font-size: $badge-font-size;
+    border-radius: $badge-border-radius;
+    font-weight: 400;
+    &-pill { border-radius: $badge-pill-border-radius; }
+    &-xs { 
+        padding: $badge-xs-padding;
+        font-size: $badge-xs-font-size;
+    }
+    &-sm { 
+        padding: $badge-sm-padding;
+        font-size: $badge-sm-font-size;
+    }
+    &-lg { 
+        padding: $badge-lg-padding;
+        font-size: $badge-lg-font-size;
+    }
+    @each $color-name, $color-value in $colors {
+        &-#{$color-name} {
+            background-color: $color-value !important;
+            @if ($color-name == 'white') {
+                color: $badge-dark-theme-color !important;
+            } @else if ($color-name == 'primary-500') {
+                color: color('primary') !important; 
+            } @else {
+                color: $badge-light-theme-color !important; 
+            }
+        }
+    }
+}

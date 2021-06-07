@@ -1,0 +1,249 @@
+// BACKGROUND UTILS
+@each $color-name, $color-value in $colors {
+    .bg-#{$color-name} { background-color: $color-value !important; }
+}
+
+// SIZING
+// loop to max size in base.scss
+$sizing-props: (
+    width: w, 
+    height: h,
+    max-width: max-w,
+    min-width: min-w
+);
+// UNIT SIZE (0, REM)
+@for $i from 0 to ($sizing-max+1) {
+    @each $prop-name, $prop-abb in $sizing-props {
+        // IF 0 : w-0 (no w-0rem)
+        @if ($i == 0) {
+            .#{$prop-abb}-#{$i} { #{$prop-name}: $i !important; }
+        } @else {
+            .#{$prop-abb}-#{$i}rem { #{$prop-name}: $i * 1rem !important; }
+        }
+    }
+}
+// UNIT SIZE (0, REM) RESPONSIVE
+@for $i from 0 to ($sizing-max+1) {
+    @each $prop-name, $prop-abb in $sizing-props {
+        @each $breakpoint-name, $breakpoint-value in $breakpoints {
+            // IF 0 : w-lg-0 (not w-lg-0rem)
+            @if ($i == 0) {
+                .#{$prop-abb}-#{$breakpoint-name}-#{$i} { 
+                    @media screen and (min-width: $breakpoint-value) {
+                        #{$prop-name}: $i !important; 
+                    }
+                }
+            } @else {
+                .#{$prop-abb}-#{$breakpoint-name}-#{$i}rem { 
+                    @media screen and (min-width: $breakpoint-value) {
+                        #{$prop-name}: $i * 1rem !important; 
+                    }
+                }
+            }
+        }
+    }
+}
+// PERCENTAGE SIZE
+@for $i from 25 to 101 {
+    @if ($i % 25 == 0) {
+        @each $prop-name, $prop-abb in $sizing-props {
+            .#{$prop-abb}-#{$i} { #{$prop-name}: $i * 1%; }
+            @each $breakpoint-name, $breakpoint-value in $breakpoints {
+                @media screen and (min-width: $breakpoint-value) {
+                    .#{$prop-abb}-#{$breakpoint-name}-#{$i} { #{$prop-name}: $i * 1% !important; }
+                }
+            }
+        }
+    }
+}
+
+
+
+// SPACING
+$spacing-props: (
+    margin: m, 
+    margin-left: ml, 
+    margin-right: mr, 
+    margin-top: mt, 
+    margin-bottom: mb, 
+    (margin-left, margin-right): mx,
+    (margin-top, margin-bottom): my,
+    padding: p, 
+    padding-left: pl, 
+    padding-right: pr, 
+    padding-top: pt, 
+    padding-bottom: pb, 
+    (padding-left, padding-right): px,
+    (padding-top, padding-bottom): py,
+);
+@for $i from 0 to ($spacing-max+1) {
+    @each $prop-name, $prop-abb in $spacing-props {
+        .#{$prop-abb}-#{$i} {
+            @each $pn in $prop-name {
+                #{$pn}: ($i * $spacing-multiply-size) * .5rem !important;
+            }
+        }
+    }
+}
+@for $i from 0 to ($spacing-max+1) {
+    @each $prop-name, $prop-abb in $spacing-props {
+        @each $breakpoint-name, $breakpoint-value in $breakpoints {
+            .#{$prop-abb}-#{$breakpoint-name}-#{$i} {
+                @media screen and (min-width: $breakpoint-value) {
+                    @each $pn in $prop-name {
+                        #{$pn}: ($i * $spacing-multiply-size) * .5rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// TEXT UTILS
+/* color */
+@each $color-name, $color-value in $colors {
+    .text-#{$color-name} { color: $color-value !important; }
+}
+
+/* weight */
+.font-light {font-weight: 300;}
+.font-normal {font-weight: 400;}
+.font-semibold {font-weight: 600;}
+.font-bold {font-weight: 700;}
+.font-extrabold {font-weight: 800;}
+.font-boldest {font-weight: 900;}
+/* line-height */
+.text-height-0 {line-height: 0;}
+.text-height-xs {line-height: 1;}
+.text-height-sm {line-height: 1.4;}
+.text-height-md {line-height: 1.6;}
+.text-height-lg {line-height: 1.8;}
+.text-dec-none {text-decoration: none;}
+.text-dec-through {text-decoration: line-through;}
+
+// BORDER UTILS
+/* radius */
+.rounded-sm {border-radius: 5px !important;}
+.rounded-md {border-radius: 10px !important;}
+.rounded-lg {border-radius: 15px !important;}
+.rounded-xl {border-radius: 25px !important;}
+/* size */
+.border-xs { border: .5px solid #6f6f6f; }
+.border { border: 1px solid #6f6f6f; }
+.border-md { border: 1.5px solid #6f6f6f; }
+.border-lg { border: 2px solid #6f6f6f; }
+/* colors */
+@each $color-name, $color-value in $colors {
+    .border-#{$color-name} { border-color: $color-value !important; }
+}
+
+
+// HOVER 
+.hover-scale {
+    &:hover {
+        transition: all .3s ease-in-out;
+        transform: scale(1.1);
+    }
+}
+.hover-shadowed {
+    transition: all .3s ease-in-out;
+    &:hover {
+        box-shadow: 
+            0px 100px 80px rgba(75, 83, 228, 0.07), 
+            0px 22.3363px 17.869px rgba(75, 83, 228, 0.0417275), 
+            0px 6.6501px 5.32008px rgba(75, 83, 228, 0.0282725);
+    }
+}
+// bg color
+@each $color-name, $color-value in $colors {
+    .hover-bgcolor-#{$color-name} {
+        transition: all .3s ease-in-out;
+        &:hover {
+            background-color: $color-value !important;
+        }
+    }
+}
+
+// SHADOW
+.shadow-default {
+    box-shadow: 
+        0px 100px 80px rgba(75, 83, 228, 0.07), 
+        0px 22.3363px 17.869px rgba(75, 83, 228, 0.0417275), 
+        0px 6.6501px 5.32008px rgba(75, 83, 228, 0.0282725);
+}
+@each $color-name, $color-value in $colors {
+    .shadow-#{$color-name}-sm {
+        box-shadow: 0 15px 40px rgba($color-value, .1);
+    }
+}
+
+// OPACITY
+@for $i from 0 to 10 {
+    .op-#{$i} { opacity: $i * .1 !important; }
+}
+
+// DIVIDER
+.divider {
+    background-color: $divider-color;
+    width: 100%;
+    height: $divider-weight;
+    &-vertical {
+        height: 100%;
+        width: $divider-weight;
+    }
+}
+
+// OBJECT
+.obj-fit {
+    overflow: hidden;
+    &.obj-fit-cover {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &.obj-fit-contain {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    &.obj-fit-fill {
+        img, video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &.obj-pos-ct {
+        img {object-position: center top;}
+    }
+}
+
+// GUTTER
+.row {
+    &.gutters-xs{
+        margin-left: -.5rem;
+        margin-right: -.5rem;
+        & > [class^=col]{
+            padding: 0 .5rem;
+        }
+    }
+    &.gutters-sm{
+        margin-left: -1rem;
+        margin-right: -1rem;
+        & > [class^=col]{
+            padding: 0 1rem;
+        }
+    }
+}
+
+
+// MISC
+.csr-pointer { cursor: pointer; }

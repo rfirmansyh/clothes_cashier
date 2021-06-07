@@ -1,0 +1,102 @@
+// RESET
+
+// FONT FAMILY TYPE
+@if variable-exists(font-type-secondary) {
+    .font-type-secondary { font-family: $font-type-secondary; }
+}
+
+// SIZE
+:root {
+    font-size: $root-font-size - 1px;
+    @media screen and (min-width: breakpoint('xl')) {
+        font-size: $root-font-size;
+    }
+}
+html,body {
+    margin: 0; padding: 0;
+    width: 100%;
+    // Avoid Scroll-x Appear on mobile responsive
+    @media screen and (max-width: breakpoint('md')) {
+        overflow-x: hidden !important;
+        overflow-y: auto;
+    }
+}
+body {
+    font-family: $font-type-primary !important;
+    font-size: $body;
+    position: relative;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1;
+    background-color: color('light');
+
+    a[data-toggle="back-top"] {
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        z-index: 99999;
+    }
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: $h1 - 1.8rem;
+    @media screen and (min-width: breakpoint('md')) { font-size: $h1 - 1.2rem; }
+    @media screen and (min-width: breakpoint('lg')) { font-size: $h1; }
+}
+
+h2 {
+    font-size: $h2 - 1.6rem;
+    @media screen and (min-width: breakpoint('md')) { font-size: $h2 - 1.8rem; }
+    @media screen and (min-width: breakpoint('lg')) { font-size: $h2; }
+}
+
+h3 {
+    font-size: $h3 - 1.6rem;
+    @media screen and (min-width: breakpoint('sm')) { font-size: $h3 - 1.2rem; }
+    @media screen and (min-width: breakpoint('lg')) { font-size: $h3; }
+}
+
+h4 {
+    font-size: $h4 - 1.2rem;
+    @media screen and (min-width: breakpoint('md')) { font-size: $h4; }
+}
+h5 {
+    font-size: $h5 - .4rem;
+    @media screen and (min-width: breakpoint('md')) { font-size: $h5; }
+}
+h6 {
+    font-size: $h6 - .3rem;
+    @media screen and (min-width: breakpoint('md')) { font-size: $h6 - .2rem; }
+    @media screen and (min-width: breakpoint('lg')) { font-size: $h6; }
+}
+
+p {
+    font-size: $p;
+    margin-bottom: 0;
+    @media screen and (max-width: breakpoint('lg')) { font-size: $p - .2rem; }
+}
+
+a {
+    color: $href-color;
+}
+
+textarea {
+    resize: none;
+}
+
+.text-xl {
+    font-size: $text-xl - 1rem;
+    @media screen and (min-width: breakpoint('md')) { font-size: $text-xl; }
+}
+.text-md {
+    font-size: $text-md - .2rem;
+    @media screen and (min-width: breakpoint('md')) { font-size: $text-md; }
+}
+.text-sm {font-size: $text-sm;}
+.text-xs {font-size: $text-xs;}
+

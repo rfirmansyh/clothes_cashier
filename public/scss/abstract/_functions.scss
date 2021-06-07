@@ -1,0 +1,18 @@
+// Required Function
+@function color($value) {
+	@return map-get($colors, $value);
+}
+
+@function breakpoint($value) {
+	@return map-get($breakpoints, $value);
+}
+
+// Optional Function
+@function gradient-color($value) {
+	@if variable-exists(gradient-colors) {
+		@return map-get($gradient-colors, $value);
+	} @else {
+		@debug("gradient-colors variable is undefined, set default to red color");
+		@return "red";
+	}
+}

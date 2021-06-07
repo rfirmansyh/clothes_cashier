@@ -1,0 +1,117 @@
+$sidebar-size: 26rem;
+
+aside.sidebar-wrapper {
+    flex: 0 0 100%;
+    max-width: 100%;
+    @media screen and (min-width: breakpoint('lg')) {
+        flex: 0 0 ($sidebar-size - 10rem) !important;
+        max-width: ($sidebar-size - 10rem) !important;
+    }
+    @media screen and (min-width: breakpoint('xl')) {
+        flex: 0 0 $sidebar-size !important;
+        max-width: $sidebar-size !important;
+    }
+}
+
+div.sidebar {
+    position: fixed;
+    width: 100%;
+    left: 0; right: 0; bottom: 0;
+    box-shadow: 0 -5px 20px rgba(color('gray'), .1);
+    background-color: color('white');
+    z-index: 10;
+    @media screen and (min-width: breakpoint('lg')) {
+        width: $sidebar-size - 10rem;
+        min-height: 100vh;
+        box-shadow: 5px 0 20px rgba(color('gray'), .1);
+        left: unset; right: unset;
+        top: 0; bottom: 0;
+    }
+    @media screen and (min-width: breakpoint('xl')) {
+        width: $sidebar-size;
+        min-height: 100vh;
+        box-shadow: 5px 0 20px rgba(color('gray'), .1);
+    }
+
+    .sidebar-brand {
+        display: inline-flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 2.4rem;
+        color: color('primary') !important;
+        padding: 1.2rem 1.5rem;
+        @media screen and (min-width: breakpoint('lg')) {
+            padding: 2rem 2.6rem;
+        }
+        @media screen and (min-width: breakpoint('xl')) {
+            padding: 2rem 3.6rem;
+        }
+        &:hover {
+            text-decoration: none;
+            color: color('primary') !important;
+        }
+    }
+
+    nav.nav {
+        padding: 1rem 0;
+        @media screen and (min-width: breakpoint('lg')) {
+            padding: 1rem 0;
+        }
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.4rem;
+            color: color('gray');
+            position: relative;
+            transition: color .3s ease-in;
+            padding: 1.2rem 1.5rem;
+            &:not(:last-child) {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: .1rem;
+                    height: 50%;
+                    background-color: rgba(color('gray'), .3);
+                    right: 0;
+                }
+            }
+            &:hover { color: color('primary'); }
+            @media screen and (min-width: breakpoint('xs') - 100px) {
+                padding: 1rem 2rem;
+            }
+            @media screen and (min-width: breakpoint('xs')) {
+                padding: 1rem 3rem;
+            }
+            @media screen and (min-width: breakpoint('md')) {
+                padding: 1rem 4.5rem;
+            }
+            @media screen and (min-width: breakpoint('lg')) {
+                padding: 1.2rem 3.5rem;
+                font-size: 1.2rem;
+                &::after {
+                    display: none;
+                    opacity: 0;
+                }
+                i { width: 2.4rem;}
+            }
+            @media screen and (min-width: breakpoint('xl')) {
+                font-size: 1.6rem;
+            }
+
+
+            &.active {
+                color: color('primary');
+                @media screen and (min-width: breakpoint('lg')) {
+                    &::before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 2px; height: 50%;
+                        background-color: color('primary');
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

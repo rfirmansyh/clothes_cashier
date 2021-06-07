@@ -1,0 +1,238 @@
+/* ======================>  README  <===================== */
+/* 
+    Please consider to set all attribute in this file only,
+*/
+/*
+    Keyword :
+    theme : For components that splitted for light/dark color/background
+    props : For some properties on the component that included some docs in this file variables
+*/
+/*
+    Table of Variable Contents (to search) :
+    1. COLORS
+    2. TYPOGRAPHY
+    3. BREAKPOINTS
+    4. SIZING
+    5. SPACING
+    6. COMPONENT : BADGE
+    7. COMPONENT : BUTTON
+    8. COMPONENT : FORM
+    9. COMPONENT : CARD
+*/
+/* ======================> END OF README <===================== */
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/*
+|=====================================================================
+| 1. COLORS 
+|=====================================================================
+*/
+    /*
+        $colors
+        ============
+        the required variable must exist
+    */
+    $colors : (
+        'primary'       : #2fa6f8, // required
+        'secondary'     : #a2a4a5, // required
+        'success'       : #47c363, // required
+        'danger'        : #fc544b, // required
+        'danger-500'    : #ffd0cd, // required
+        'black'         : #13171a, // required
+        'white'         : #FFFFFF, // required
+        'muted'         : #98a6ad, // required
+        'gray'          : #868e96, // required
+        'info'          : #3abaf4, 
+        'warning'       : #ffa426, 
+        'light'         : #f4f8fb,
+        'dark'          : #191d21,
+    );  
+
+    /* 
+        $loop-colors
+        ================
+        this varible will loop in all components and utility
+        such us button, bg util, text color
+    */
+    $loop-colors : $colors;
+    $loop-colors : map-remove($loop-colors, 'black');
+
+    // GRADIENT COLORS : IF YOU NEED IT, UNCOMMENT BELLOW
+    // $gradient-colors : (
+    //     'primary'       : linear-gradient(90.92deg, #5860E7 4.13%, #2D37F0 45.77%, #131BAC 99.32%),
+    // );
+
+    $href-color: map-get($colors, 'primary');
+    $divider-color: map-get($colors, 'muted');
+    $divider-weight: 1px;
+
+/*
+|=====================================================================
+| TYPOGRAPH 
+|=====================================================================
+*/
+    // FONT FAMILY
+    // 1. Primary/Default : Montserrat
+    // 2. Secondary (rare used) : Roboto
+    $font-type-primary: 'Montserrat', sans-serif;
+    $font-type-secondary: 'Roboto', sans-serif;
+
+    // FONTSIZE
+    $root-font-size: 10px;
+    $body: 1.4rem;
+    $h1: 4.8rem;
+    $h2: 4.2rem;
+    $h3: 3.6rem;
+    $h4: 3.2rem;
+    $h5: 2.4rem;
+    $h6: 1.8rem;
+    $p: 1.4rem;
+    $text-xl: 2.4rem;
+    $text-md: 1.6rem;   
+    $text-sm: 1.2rem;
+    $text-xs: 1rem;
+
+/*
+|=====================================================================
+| BREAKPOINTS
+|=====================================================================
+*/
+    $breakpoints: (
+        'sm'        : 576px,
+        'md'        : 768px,
+        'lg'        : 992px,
+        'xl'        : 1200px,
+    );
+
+
+/*
+|=====================================================================
+| SIZING
+|=====================================================================
+*/
+    $sizing-max : 50;
+    $sizing-increment: 1;
+
+
+/*
+|=====================================================================
+| SPACING
+|=====================================================================
+*/
+    $spacing-max: 11;
+    $spacing-multiply-size: 1;
+
+
+/*
+|=====================================================================
+| COMPONENT : BADGE
+|=====================================================================
+*/
+    // BASE
+    $badge-padding: .6rem .8rem;
+    $badge-font-size: 1.2rem;
+    $badge-border-radius: .4rem;
+    // SIZE : xs
+    $badge-xs-padding: .2rem .4rem;
+    $badge-xs-font-size: .8rem;
+    // SIZE : sm
+    $badge-sm-padding: .4rem .6rem;
+    $badge-sm-font-size: 1rem;
+    // SIZE : lg
+    $badge-lg-padding: .8rem 1.6rem;
+    $badge-lg-font-size: 1.7rem;
+    // TYPE : PILL
+    $badge-pill-border-radius: 1.8rem;
+    // OTHERS : DEFAULT PROPS STATE
+    $badge-light-theme-color: map-get($colors, 'white');
+    $badge-dark-theme-color: map-get($colors, 'black');
+
+
+/*
+|=====================================================================
+| COMPONENT : BUTTON
+|=====================================================================
+*/
+    // BASE
+    $btn-padding: 1rem 1.6rem;
+    $btn-border-radius: .5rem;
+    $btn-font-weight: 500;
+    $btn-font-size: 1.6rem;
+    $btn-box-shadow-size: 0 15px 30px;
+    $btn-box-shadow-opacity: .4;
+    // SIZE : XS
+    $btn-xs-padding: .5rem .9rem;
+    $btn-xs-font-size: 1.2rem;
+    // SIZE : SM
+    $btn-sm-padding: .8rem 1.2rem;
+    $btn-sm-font-size: 1.4rem;
+    // SIZE : LG
+    $btn-lg-padding: 1.6rem 2.4rem;
+    $btn-lg-font-size: 1.6rem;
+    // TYPE : PILL
+    $btn-pill-border-radius: 0;
+    // TYPE : OUTLINE
+    $btn-outline-props-color: map-get($colors, 'white'); // hover/active/focus bgcolor
+    // OTHERS : DEFAULT PROPS STATE
+    $btn-light-props-color: map-get($colors, 'primary'); // hover/active bgcolor
+    $btn-dark-props-color: map-get($colors, 'white'); // color
+
+
+/*
+|=====================================================================
+| COMPONENT : FORM
+|=====================================================================
+*/
+    // FORM-GROUP
+        $group-margin: 0;
+    // LABEL
+        $label-font-size: 1.4rem;
+        $label-font-weight: 400;
+        $label-color: map-get($colors, 'grey');
+        $label-margin: 0 0 .5rem 0;
+    // FORM-CONTROL / INPUT
+        $input-bg-color: rgba(map-get($colors, 'white'), .1);
+        $input-border: none; // 2px solid rgba(map-get($colors, 'primary'), .4)
+        $input-focus-border: none; // 2px solid rgba(map-get($colors, 'primary'), 1)
+        $input-placeholder-color: #9aa0bd;
+        $input-color: map-get($colors, 'grey');
+        $input-border-radius: .5rem;
+        $input-font-size: 1.4rem;
+        $input-padding: 1.4rem 1.6rem;
+        $input-focus-box-shadow: none; // 0px 20px 40px rgba(map-get($colors, 'primary'), .1)
+        // SIZE : SM
+        $input-sm-padding: .8rem 1.6rem;
+        $input-sm-font-size: 1.4rem;
+        // SIZE : LG
+        $input-lg-padding: 1.6rem 1.6rem;
+        $input-lg-font-size: 1.6rem;
+        // VALIDATION : INVALID
+        $input-invalid-border: 1px solid map-get($colors, 'danger');
+        $input-invalid-props-color: map-get($colors, 'danger');
+        $input-invalid-box-shadow: 0px 20px 40px rgba(map-get($colors, 'danger'), .1);
+        $input-invalid-icon: unset;
+        // VALIDATION : VALID
+        $input-valid-border: 1px solid map-get($colors, 'success');
+        $input-valid-props-color: map-get($colors, 'success');
+        $input-valid-box-shadow: 0px 20px 40px rgba(map-get($colors, 'success'), .1);
+        // CUSTOM
+        $custom-input-size: 1.5rem;
+        $custom-input-unchecked-color: map-get($colors, 'grey');
+        $custom-input-checked-color: map-get($colors, 'primary');
+        $custom-input-box-shadow: none;
+        $custom-label-font-size: 1.3rem;
+        $custom-label-padding: 1px 0 0 8px;
+    
+
+/*
+|=====================================================================
+| COMPONENT : CARD
+|=====================================================================
+*/
+    $card-border: 0;
+    $card-padding: 1.6rem;
+    $card-border-radius: .5rem;
+    $card-header-bg-color: map-get($colors, 'white');

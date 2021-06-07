@@ -1,0 +1,11 @@
+.card {
+    padding: 0;
+    border: $card-border;
+    border-radius: $card-border-radius;
+    .card-header {
+        background-color: $card-header-bg-color;
+    }
+    .card-body {
+        padding: $card-padding;
+    }
+}
