@@ -14,16 +14,17 @@
                 </a>
             </div>
             <div class="col-auto">
-                <div class="dropdown dropdown-block">
+                <div class="mr-2 text-gray"><i class="fas fa-user-circle text-gray mr-1"></i> Admin</div>
+                <!-- <div class="dropdown dropdown-block">
                     <div class="d-flex align-items-center" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                        <div class="mr-2">Hey, Spancer</div>
+                        <div class="mr-2">Admin</div>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item text-danger" href="">
                             <i class="fas fa-sign-in-alt mr-1"></i> Logout
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

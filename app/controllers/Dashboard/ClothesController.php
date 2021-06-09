@@ -21,7 +21,7 @@
 
         public function show($id)
         {
-            $data['title'] = 'Clothes detail';
+            $data['title'] = 'Clothes details';
             $data['clothe'] = $this->Clothe->where('id', '=', $id)->first();
 
             $this->view('dashboard/clothes/show', $data);
@@ -57,6 +57,7 @@
                 'success'
             );
             header("Location: " . BASE_URL.'/admin/dashboard/clothes/');
+            die;
         }
 
         public function update($id)
@@ -76,6 +77,7 @@
                 'success'
             );
             header("Location: " . BASE_URL.'/admin/dashboard/clothes/');
+            die;
         }
 
         public function delete($id)
@@ -89,5 +91,6 @@
                 'warning'
             );
             header("Location: " . BASE_URL.'/admin/dashboard/clothes/');
+            die;
         }
     } 

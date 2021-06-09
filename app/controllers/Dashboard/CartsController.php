@@ -18,9 +18,11 @@
                 'item' => 0,
                 'price' => 0,
             ];
-            foreach ($data['carts'] as $cart) {
-                $data['total']['item'] += $cart['item_quantity'];
-                $data['total']['price'] += $cart['item_total'];
+            if ( $data['carts'] ) {
+                foreach ($data['carts'] as $cart) {
+                    $data['total']['item'] += $cart['item_quantity'];
+                    $data['total']['price'] += $cart['item_total'];
+                }
             }
 
             $this->view('dashboard/carts/index', $data);
@@ -39,12 +41,19 @@
             $this->Cart->item_total = ($cartCurrentClothe['item_quantity'] + 1) * $cartCurrentClothe['item_price'];
 
             $this->Cart->save();
+            Flasher::setFlash(
+                'Tambah Item pada Cart',
+                'Tambah Item pada Cart Berhasil !',
+                'success'
+            );
             header("Location: " . BASE_URL.'/admin/dashboard/clothes/');
+            die;
         }
 
         public function clear() {
             Session::delete('carts');
             header("Location: " . BASE_URL.'/admin/dashboard/carts/');
+            die;
         }
 
     } 

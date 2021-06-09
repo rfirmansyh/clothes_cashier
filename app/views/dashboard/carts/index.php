@@ -24,6 +24,10 @@
                     <div class="col-auto text-right">x<?= $data['total']['item']; ?></div>
                     <div class="col-auto text-right"><?= $data['total']['price']; ?></div>
                 </div>
+
+                <a href="<?= BASE_URL.'/admin/dashboard/carts/clear' ?>" class="btn btn-sm btn-danger mt-8">
+                    <i class="fas fa-trash mr-1"></i> Hapus Cart
+                </a>
             </div>    
             <div class="col-lg-6">
                 <h5 class="mb-5">Konfirmasi Pembayaran</h5>
@@ -59,7 +63,22 @@
             </div>
         </div>
         <?php else: ?>
-        <h3>Tidak ada data dalam Keranjang</h3>
+            
+            <h3 class="text-dark text-center">Keranjang Masih Kosong</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <img src="<?= BASE_URL.'/public/img/assets/cart.svg' ?>" alt="" class="w-100">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <a href="<?= BASE_URL.'/admin/dashboard/clothes/' ?>" class="btn btn-primary">
+                        + Tambahkan Sekarang
+                    </a>
+                </div>
+            </div>
+
+
         <?php endif; ?>
     </div>
 

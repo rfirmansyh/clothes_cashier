@@ -37,7 +37,11 @@
                                     </a>
                                 </div>
                                 <div class="col-auto">
+                                    <?php if ($clothe->stock > 0): ?>
                                     <a href="<?= BASE_URL.'/admin/dashboard/carts/add/'.$clothe->id ?>" class="btn btn-xs btn-primary">+ Keranjang</a>
+                                    <?php else: ?>
+                                    <button disabled class="btn btn-xs btn-secondary">+ Keranjang</button>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
